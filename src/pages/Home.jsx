@@ -1444,7 +1444,7 @@ const MenuHero = () => {
                 </a>
               </div>
               <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600">
+                <div class="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-sky-400">
                   <img
                     alt="..."
                     src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
@@ -1460,11 +1460,11 @@ const MenuHero = () => {
                     >
                       <polygon
                         points="-30,95 583,95 583,65"
-                        class="text-pink-600 fill-current"
+                        class="text-sky-400 fill-current"
                       ></polygon>
                     </svg>
-                    <h4 class="text-xl font-bold text-white">KEPALA SEKOLAH</h4>
-                    <p class="text-md font-light mt-2 text-white">
+                    <h4 class="text-xl font-bold text-black">KEPALA SEKOLAH</h4>
+                    <p class="text-md font-light mt-2 text-black">
                       SMK DIPONEGORO TUMPANG
                     </p>
                   </blockquote>
