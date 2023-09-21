@@ -1230,7 +1230,7 @@ const MenuStatistik = () => {
           <div class="stat">
             <div class="stat-title"></div>
             <div className="stat-value">{total()}</div>
-            <div class="stat-desc">TOTAL</div>
+            <div class="stat-desc">TOTAL SISWA</div>
           </div>
 
           <div class="stat">
@@ -1242,7 +1242,7 @@ const MenuStatistik = () => {
           <div class="stat">
             <div class="stat-title"></div>
             <div class="stat-value">{dkv()}</div>
-            <div class="stat-desc">↘︎100 DKV</div>
+            <div class="stat-desc"> DKV</div>
           </div>
           <div class="stat">
             <div class="stat-title"></div>
