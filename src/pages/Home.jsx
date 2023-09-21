@@ -14,6 +14,7 @@ import img_drop from "../assets/img/svg/drop.svg";
 import img_brain from "../assets/img/svg/brain.svg";
 import img_timer from "../assets/img/svg/timer.svg";
 import img_collaboration from "../assets/img/svg/collaboration.png";
+import logo_microsoft from "../assets/img/svg/microsoft.svg";
 
 import "flowbite";
 import { A } from "@solidjs/router";
@@ -47,6 +48,7 @@ const HomeIndex = () => {
         {/* <MenuBerita /> */}
         {/* <MenuAgenda /> */}
         <MenuAlumni />
+        <MenuKerjaSAMA />
         {/* <TWStarterKit /> */}
         <Motion.div
           animate={{ opacity: [0, 1] }}
@@ -88,19 +90,61 @@ const Navbar = () => {
               <li>
                 <A href="/">BERANDA</A>
               </li>
-              <li>
-                <a>TENTANG KAMI</a>
-                <ul class="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
+              <li tabindex="0">
+                <details>
+                  <summary>TENTANG KAMI</summary>
+                  <ul class="p-2">
+                    <li>
+                      <a>Profile Sekolah</a>
+                    </li>
+                    <li>
+                      <a>Visi dan Misi</a>
+                    </li>
+                    <li>
+                      <a>Akreditasi</a>
+                    </li>
+                    <li>
+                      <a>Hubungan Industri </a>
+                    </li>
+                    <li>
+                      <a>Fasilitas </a>
+                    </li>
+                    <li>
+                      <a>Prestasi </a>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+              <li tabindex="0">
+                <details>
+                  <summary>PROGRAM KEAHLIAN</summary>
+                  <ul class="p-2">
+                    <li>
+                      <a>Teknik Jaringan Komputer Telekomunikasi</a>
+                    </li>
+                    <li>
+                      <a>Desain Komunikasi Visual</a>
+                    </li>
+                    <li>
+                      <a>Farmasi</a>
+                    </li>
+                    <li>
+                      <a>Layanan Kesehatan</a>
+                    </li>
+                    <li>
+                      <a>Perhotelan</a>
+                    </li>
+                    <li>
+                      <a>Teknik Otomotif</a>
+                    </li>
+                  </ul>
+                </details>
               </li>
               <li>
-                <a>Item 3</a>
+                <a>BERITA</a>
+              </li>
+              <li>
+                <a>HUBUNGI KAMI</a>
               </li>
             </ul>
           </div>
@@ -2136,6 +2180,59 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+    </>
+  );
+};
+
+const MenuKerjaSAMA = () => {
+  return (
+    <>
+      <section class="bg-white py-20 lg:py-[120px]">
+        <div class="container mx-auto">
+          <div class="-mx-4 flex flex-wrap">
+            <div class="w-full px-4">
+              <div class="flex flex-wrap items-center justify-center gap-2">
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px] border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img src={logo_microsoft} alt="image" class="h-10 w-full" />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src="https://cdn.tailgrids.com/2.0/image/assets/images/brands/lineicons.svg"
+                    alt="image"
+                    class="h-10 w-full"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src="https://cdn.tailgrids.com/2.0/image/assets/images/brands/uideck.svg"
+                    alt="image"
+                    class="h-10 w-full"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src="https://cdn.tailgrids.com/2.0/image/assets/images/brands/ayroui.svg"
+                    alt="image"
+                    class="h-10 w-full"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
