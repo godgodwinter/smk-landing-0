@@ -14,7 +14,7 @@ const LandingLayout = () => {
         ></Motion.div>
         <div class="flex overflow-hidden pt-24 px-2 bg-base-100">
           <div class="opacity-50 hidden fixed inset-0 z-10" />
-          <div class="w-full relative lg:ml-72">
+          <div class="w-full relative ">
             <main class="pb-4 min-h-screen">
               <Outlet />
             </main>
