@@ -27,8 +27,6 @@ const HomeIndex = () => {
           animate={{ opacity: [0, 1] }}
           transition={{ duration: 2, easing: "ease-in-out" }}
         >
-          <MenuSatu />
-
           <MenuHero />
         </Motion.div>
         <Motion.div
@@ -36,11 +34,8 @@ const HomeIndex = () => {
           transition={{ duration: 2, easing: "ease-in-out" }}
         >
           <MenuDua />
+          <MenuSatu />
         </Motion.div>
-        {/* <MenuStatistik /> */}
-        {/* <MenuSambutanKepsek /> */}
-        {/* <MenuBerita /> */}
-        {/* <MenuAgenda /> */}
         <MenuAlumni />
         <MenuKerjaSAMA />
         {/* <TWStarterKit /> */}
@@ -49,13 +44,6 @@ const HomeIndex = () => {
   );
 };
 
-{
-  /* <img
-            class="object-cover w-full h-full max-w-2xl rounded-md"
-            src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
-            alt="apple watch photo"
-          /> */
-}
 const MenuSatu = () => {
   const data = [
     {
@@ -1041,15 +1029,19 @@ const MenuStatistik = () => {
   const [total, setTotal] = createSignal(0);
   const [tkjt, setTkjt] = createSignal(0);
   const [dkv, setdkv] = createSignal(0);
+  const [oto, setoto] = createSignal(0);
+  const [kesehatan, setkesehatan] = createSignal(0);
   const [perhotelan, setperhotelan] = createSignal(0);
   const [farmasi, setfarmasi] = createSignal(0);
 
   // Tentukan angka akhir yang Anda inginkan
-  const targetTotal = 572;
-  const targetTkjt = 200;
-  const targetperhotelan = 100;
-  const targetfarmasi = 80;
-  const targetdkv = 140;
+  const targetTotal = 777;
+  const targetTkjt = 283;
+  const targetoto = 157;
+  const targetdkv = 119;
+  const targetkesehatan = 116;
+  const targetperhotelan = 75;
+  const targetfarmasi = 27;
 
   // Tentukan durasi animasi dalam milidetik (misalnya, 5 detik)
   const animationDuration = 5000;
@@ -1077,6 +1069,8 @@ const MenuStatistik = () => {
     animateNumber(0, targetTotal, animationDuration, setTotal);
     animateNumber(0, targetTkjt, animationDuration, setTkjt);
     animateNumber(0, targetdkv, animationDuration, setdkv);
+    animateNumber(0, targetoto, animationDuration, setoto);
+    animateNumber(0, targetkesehatan, animationDuration, setkesehatan);
     animateNumber(0, targetperhotelan, animationDuration, setperhotelan);
     animateNumber(0, targetfarmasi, animationDuration, setfarmasi);
   });
@@ -1099,8 +1093,18 @@ const MenuStatistik = () => {
 
           <div class="stat">
             <div class="stat-title"></div>
+            <div class="stat-value">{oto()}</div>
+            <div class="stat-desc"> OTO</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title"></div>
             <div class="stat-value">{dkv()}</div>
             <div class="stat-desc"> DKV</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title"></div>
+            <div class="stat-value">{kesehatan()}</div>
+            <div class="stat-desc">KESEHATAN</div>
           </div>
           <div class="stat">
             <div class="stat-title"></div>
