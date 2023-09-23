@@ -30,7 +30,7 @@ export default {
   },
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,html}",
     // "./node_modules/flowbite/**/*.js", // configure the Flowbite JS source template paths
   ],
   theme: {
