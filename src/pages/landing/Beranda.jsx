@@ -1303,7 +1303,7 @@ const MenuHero = () => {
                   penerus bangsa. Terima kasih atas kunjungan Anda.
                 </p>
                 <a href="#" class="font-bold text-gray-800 mt-8">
-                  Dr Joko Widodo
+                  Ihya Ulumudin, S.Kom, M.M
                 </a>
               </div>
               <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
