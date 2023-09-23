@@ -15,7 +15,7 @@ import img_brain from "@/assets/img/svg/brain.svg";
 import img_timer from "@/assets/img/svg/timer.svg";
 import img_collaboration from "@/assets/img/svg/collaboration.png";
 import logo_microsoft from "@/assets/img/svg/microsoft.svg";
-import img_photo_kepsek from "../../assets/img/random/photo-1.png";
+import img_photo_kepsek from "../../assets/img/smk/galeri/05.jpg";
 
 import "flowbite";
 import { A } from "@solidjs/router";
