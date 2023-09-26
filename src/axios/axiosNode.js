@@ -4,10 +4,10 @@ import axios from "axios";
 // https://dev.to/lukocastillo/svelte-3-how-to-connect-your-app-with-a-rest-api-axios-2h4e
 const BASE_URL = import.meta.env.VITE_API_URL
   ? import.meta.env.VITE_API_URL
-  : "http://localhost:8002/";
+  : "http://localhost:8100/";
 // Create a instance of axios to use the same base url.
 const axiosAPI = axios.create({
-  baseURL: `${BASE_URL}api/${import.meta.env.VITE_API_VERSION}/`, // it's not recommended to have this info here.
+  baseURL: `${BASE_URL}api/`, // it's not recommended to have this info here.
 });
 
 // implement a method to execute all the request from here.
