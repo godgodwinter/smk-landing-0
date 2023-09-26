@@ -31,29 +31,31 @@ const Navbar = () => {
                   class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <A href="/">BERANDA</A>
+                    <A href="/home">BERANDA</A>
                   </li>
                   <li tabindex="0">
                     <details>
                       <summary>TENTANG KAMI</summary>
                       <ul class="p-2">
                         <li>
-                          <A href="/about/profile">Profile Sekolah</A>
+                          <A href="/pages/profile">Profile Sekolah</A>
                         </li>
                         <li>
-                          <a>Visi dan Misi</a>
+                          <A href="/pages/visimisi">Visi dan Misi</A>
                         </li>
                         <li>
-                          <a>Akreditasi</a>
+                          <A href="/pages/akreditasi">Akreditasi</A>
                         </li>
                         <li>
-                          <a>Hubungan Industri </a>
+                          <A href="/pages/hubunganindustri">
+                            Hubungan Industri{" "}
+                          </A>
                         </li>
                         <li>
-                          <a>Fasilitas </a>
+                          <A href="/pages/fasilitas">Fasilitas </A>
                         </li>
                         <li>
-                          <a>Prestasi </a>
+                          <A href="/pages/prestasi">Prestasi </A>
                         </li>
                       </ul>
                     </details>
@@ -63,7 +65,9 @@ const Navbar = () => {
                       <summary>PROGRAM KEAHLIAN</summary>
                       <ul class="p-2">
                         <li>
-                          <a>Teknik Jaringan Komputer Telekomunikasi</a>
+                          <A href="/pages/jurusan/tjkt">
+                            Teknik Jaringan Komputer Telekomunikasi
+                          </A>
                         </li>
                         <li>
                           <a>Desain Komunikasi Visual</a>
@@ -84,10 +88,10 @@ const Navbar = () => {
                     </details>
                   </li>
                   <li>
-                    <a>BERITA</a>
+                    <A href="/pages/berita">BERITA</A>
                   </li>
                   <li>
-                    <a>HUBUNGI KAMI</a>
+                    <A href="/pages/contact">HUBUNGI KAMI</A>
                   </li>
                 </ul>
               </div>
