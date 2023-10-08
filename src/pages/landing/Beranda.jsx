@@ -20,6 +20,8 @@ import img_photo_kepsek from "../../assets/img/smk/galeri/05.jpg";
 import "flowbite";
 import { A } from "@solidjs/router";
 import { createEffect, createSignal, onCleanup } from "solid-js";
+import ApiNode from "@/axios/axiosNode";
+
 const HomeIndex = () => {
   return (
     <>
@@ -140,7 +142,72 @@ const MenuSatu = () => {
   );
 };
 //PROGRAMKEAHLIAN
+
 const MenuDua = () => {
+  const [dataRes, setDataRes] = createSignal(null);
+  const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal(false);
+  const fn_get_kelebihan = async () => {
+    try {
+      setLoading(true);
+      const response = await ApiNode.get(`guest/data/programkeahlian`);
+      if (response.hasOwnProperty("data")) {
+        if (response.data) {
+          setDataRes(response.data);
+          setLoading(false);
+          // console.log(response);
+          return response.data;
+        }
+        setLoading(false);
+        setError(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        return null;
+      }
+    } catch (error) {
+      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
+      console.error(error);
+      return false;
+    }
+  };
+  fn_get_kelebihan();
+
+  // Membersihkan sinyal saat komponen di-unmount (opsional).
+  onCleanup(() => {
+    setDataRes(null);
+    setLoading(false);
+    setError(false);
+  });
+
+  return (
+    <>
+      {" "}
+      {() => (
+        <Switch>
+          <Match when={loading()}>
+            <div className="space-y-2">
+              <LoadingComponent />
+              <SkeletonPaket />
+            </div>
+          </Match>
+          <Match when={error()}>
+            <FailedComponent message="Gagal mendapatkan data!" />
+          </Match>
+          <Match when={dataRes()}>
+            <MenuDua_component data={dataRes()} />
+          </Match>
+          <Match>
+            <FailedComponent message={`Data Tidak Tersedia`} />
+          </Match>
+        </Switch>
+      )}
+    </>
+  );
+};
+
+const MenuDua_component = (props) => {
+  const data = props.data;
   return (
     <>
       <section class="bg-white  py-8">
@@ -490,59 +557,8 @@ const MenuDua = () => {
                       />
                     </svg>
                   </div>
-                  <h3 class="text-3xl font-semibold">
-                    {" "}
-                    TEKNIK JARINGAN KOMPUTER TELEKOMUNIKASI
-                  </h3>
-                  <p class="mt-4 text-lg leading-relaxed text-gray-600">
-                    akan membekali siswa dengan pengetahuan dan keterampilan
-                    dalam merancang, mengelola, dan memelihara infrastruktur
-                    jaringan komputer yang handal. Siswa akan mempelajari
-                    protokol komunikasi, keamanan jaringan, manajemen jaringan,
-                    dan teknologi telekomunikasi modern seperti VoIP dan 5G
-                  </p>
-                  <ul class="list-none mt-6">
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="fas fa-fingerprint"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">
-                            Protokol komunikasi dan keamanan jaringan
-                          </h4>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="fab fa-html5"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">
-                            Teknologi telekomunikasi modern seperti VoIP dan 5G
-                          </h4>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="far fa-paper-plane"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">Web Development</h4>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                  <h3 class="text-3xl font-semibold"> {data[0].title}</h3>
+                  <div innerHTML={fn_truncateText(data[0].content, 500)}></div>
                 </div>
               </div>
             </div>
@@ -596,84 +612,8 @@ const MenuDua = () => {
                       />
                     </svg>
                   </div>
-                  <h3 class="text-3xl font-semibold">
-                    {" "}
-                    Desain Komunikasi Visual
-                  </h3>
-                  <p class="mt-4 text-lg leading-relaxed text-gray-600">
-                    akan memandu siswa dalam mengembangkan kreativitas mereka
-                    dalam bidang desain grafis dan visual.
-                  </p>
-                  <ul class="list-none mt-6">
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="fas fa-fingerprint"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">
-                            Belajar untuk merancang komunikasi visual yang
-                            efektif melalui penggunaan elemen-elemen seperti
-                            warna, tipografi, ilustrasi, dan multimedia
-                          </h4>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="fab fa-html5"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">
-                            Mereka juga akan memahami bagaimana desain dapat
-                            memengaruhi pesan dan interaksi dalam berbagai
-                            konteks.
-                          </h4>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="far fa-paper-plane"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">Komputer Grafis</h4>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="far fa-paper-plane"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">Fotografi</h4>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="py-2">
-                      <div class="flex items-center">
-                        <div>
-                          <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                            <i class="far fa-paper-plane"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <h4 class="text-gray-600">Videografi</h4>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                  <h3 class="text-3xl font-semibold"> {data[1].title}</h3>
+                  <div innerHTML={fn_truncateText(data[1].content, 500)}></div>
                 </div>
               </div>
             </div>
@@ -1027,27 +967,87 @@ const MenuSambutanKepsek = () => {
 };
 
 const MenuStatistik = () => {
+  const [dataRes, setDataRes] = createSignal(null);
+  const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal(false);
+  const fn_get_kelebihan = async () => {
+    try {
+      setLoading(true);
+      const response = await ApiNode.get(`guest/data/programkeahlian`);
+      if (response.hasOwnProperty("data")) {
+        if (response.data) {
+          setDataRes(response.data);
+          setLoading(false);
+          // console.log(response);
+          return response.data;
+        }
+        setLoading(false);
+        setError(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        return null;
+      }
+    } catch (error) {
+      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
+      console.error(error);
+      return false;
+    }
+  };
+  fn_get_kelebihan();
+
+  // Membersihkan sinyal saat komponen di-unmount (opsional).
+  onCleanup(() => {
+    setDataRes(null);
+    setLoading(false);
+    setError(false);
+  });
+
+  return (
+    <>
+      {" "}
+      {() => (
+        <Switch>
+          <Match when={loading()}>
+            <div className="space-y-2">
+              <LoadingComponent />
+              <SkeletonPaket />
+            </div>
+          </Match>
+          <Match when={error()}>
+            <FailedComponent message="Gagal mendapatkan data!" />
+          </Match>
+          <Match when={dataRes()}>
+            <MenuStatistik_component data={dataRes()} />
+          </Match>
+          <Match>
+            <FailedComponent message={`Data Tidak Tersedia`} />
+          </Match>
+        </Switch>
+      )}
+    </>
+  );
+};
+const MenuStatistik_component = (props) => {
+  const data = props.data;
+  // Fungsi untuk menghitung total siswa sesuai program
+  function fn_get_total_jml_siswa(data) {
+    return data.reduce((total, item) => total + item.jml_siswa, 0);
+  }
+
+  function fn_get_jml_siswa(data, programName) {
+    return data
+      .filter((item) => item.nama === programName)
+      .reduce((total, item) => total + item.jml_siswa, 0);
+  }
+
   const [total, setTotal] = createSignal(0);
-  const [tkjt, setTkjt] = createSignal(0);
-  const [dkv, setdkv] = createSignal(0);
-  const [oto, setoto] = createSignal(0);
-  const [kesehatan, setkesehatan] = createSignal(0);
-  const [perhotelan, setperhotelan] = createSignal(0);
-  const [farmasi, setfarmasi] = createSignal(0);
+  const targetTotal = data ? fn_get_total_jml_siswa(data) : 1;
 
-  // Tentukan angka akhir yang Anda inginkan
-  const targetTotal = 777;
-  const targetTkjt = 283;
-  const targetoto = 157;
-  const targetdkv = 119;
-  const targetkesehatan = 116;
-  const targetperhotelan = 75;
-  const targetfarmasi = 27;
+  const programNames = [...new Set(data.map((item) => item.nama))];
 
-  // Tentukan durasi animasi dalam milidetik (misalnya, 5 detik)
   const animationDuration = 5000;
 
-  // Fungsi untuk mengatur animasi penambahan angka
   const animateNumber = (startValue, endValue, duration, setter) => {
     const startTime = Date.now();
     const update = () => {
@@ -1065,64 +1065,207 @@ const MenuStatistik = () => {
     requestAnimationFrame(update);
   };
 
-  // Mulai animasi ketika komponen di-mount
   createEffect(() => {
     animateNumber(0, targetTotal, animationDuration, setTotal);
-    animateNumber(0, targetTkjt, animationDuration, setTkjt);
-    animateNumber(0, targetdkv, animationDuration, setdkv);
-    animateNumber(0, targetoto, animationDuration, setoto);
-    animateNumber(0, targetkesehatan, animationDuration, setkesehatan);
-    animateNumber(0, targetperhotelan, animationDuration, setperhotelan);
-    animateNumber(0, targetfarmasi, animationDuration, setfarmasi);
   });
 
   return (
     <>
       <div className="flex justify-center w-full">
         <div class="stats stats-vertical lg:stats-horizontal shadow">
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div className="stat-value">{total()}</div>
-            <div class="stat-desc">TOTAL SISWA</div>
-          </div>
+          <div className="stats stats-vertical lg:stats-horizontal shadow">
+            {programNames.map((programName) => (
+              <div class="stat" key={programName}>
+                <div class="stat-title"></div>
+                <div className="stat-value">
+                  {fn_get_jml_siswa(data, programName)}
+                </div>
+                <div class="stat-desc">{programName}</div>
+              </div>
+            ))}
 
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div className="stat-value">{tkjt()}</div>
-            <div class="stat-desc">↗︎ TKJT</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div class="stat-value">{oto()}</div>
-            <div class="stat-desc"> OTO</div>
-          </div>
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div class="stat-value">{dkv()}</div>
-            <div class="stat-desc"> DKV</div>
-          </div>
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div class="stat-value">{kesehatan()}</div>
-            <div class="stat-desc">KESEHATAN</div>
-          </div>
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div class="stat-value">{perhotelan()}</div>
-            <div class="stat-desc">↘︎PERHOTELAN</div>
-          </div>
-          <div class="stat">
-            <div class="stat-title"></div>
-            <div class="stat-value">{farmasi()}</div>
-            <div class="stat-desc">FARMASI</div>
+            <div class="stat">
+              <div class="stat-title"></div>
+              <div className="stat-value">{total()}</div>
+              <div class="stat-desc">TOTAL SISWA</div>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 };
+// const MenuStatistik_component = (props) => {
+//   function fn_getTotalStudents(data) {
+//     let total = 0;
+//     for (const item of data) {
+//       total += item.jml_siswa;
+//     }
+//     return total;
+//   }
+
+//   const data = props.data;
+//   const [total, setTotal] = createSignal(0);
+//   const [tkjt, setTkjt] = createSignal(0);
+//   const [dkv, setdkv] = createSignal(0);
+//   const [oto, setoto] = createSignal(0);
+//   const [kesehatan, setkesehatan] = createSignal(0);
+//   const [perhotelan, setperhotelan] = createSignal(0);
+//   const [farmasi, setfarmasi] = createSignal(0);
+
+//   // Tentukan angka akhir yang Anda inginkan
+//   const targetTotal = data ? fn_getTotalStudents(data) : 1;
+//   const targetTkjt = 283;
+//   const targetoto = 157;
+//   const targetdkv = 119;
+//   const targetkesehatan = 116;
+//   const targetperhotelan = 75;
+//   const targetfarmasi = 27;
+
+//   // Tentukan durasi animasi dalam milidetik (misalnya, 5 detik)
+//   const animationDuration = 5000;
+
+//   // Fungsi untuk mengatur animasi penambahan angka
+//   const animateNumber = (startValue, endValue, duration, setter) => {
+//     const startTime = Date.now();
+//     const update = () => {
+//       const currentTime = Date.now();
+//       const elapsedTime = currentTime - startTime;
+//       const progress = Math.min(1, elapsedTime / duration);
+//       const animatedValue = Math.round(
+//         startValue + (endValue - startValue) * progress
+//       );
+//       setter(animatedValue);
+//       if (progress < 1) {
+//         requestAnimationFrame(update);
+//       }
+//     };
+//     requestAnimationFrame(update);
+//   };
+
+//   // Mulai animasi ketika komponen di-mount
+//   createEffect(() => {
+//     animateNumber(0, targetTotal, animationDuration, setTotal);
+//     animateNumber(0, targetTkjt, animationDuration, setTkjt);
+//     animateNumber(0, targetdkv, animationDuration, setdkv);
+//     animateNumber(0, targetoto, animationDuration, setoto);
+//     animateNumber(0, targetkesehatan, animationDuration, setkesehatan);
+//     animateNumber(0, targetperhotelan, animationDuration, setperhotelan);
+//     animateNumber(0, targetfarmasi, animationDuration, setfarmasi);
+//   });
+
+//   return (
+//     <>
+//       <div className="flex justify-center w-full">
+//         <div class="stats stats-vertical lg:stats-horizontal shadow">
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div className="stat-value">{total()}</div>
+//             <div class="stat-desc">TOTAL SISWA</div>
+//           </div>
+
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div className="stat-value">{tkjt()}</div>
+//             <div class="stat-desc">↗︎ TKJT</div>
+//           </div>
+
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{oto()}</div>
+//             <div class="stat-desc"> OTO</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{dkv()}</div>
+//             <div class="stat-desc"> DKV</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{kesehatan()}</div>
+//             <div class="stat-desc">KESEHATAN</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{perhotelan()}</div>
+//             <div class="stat-desc">↘︎PERHOTELAN</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{farmasi()}</div>
+//             <div class="stat-desc">FARMASI</div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
 const MenuHero = () => {
+  const [dataRes, setDataRes] = createSignal(null);
+  const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal(false);
+  const fn_get_kelebihan = async () => {
+    try {
+      setLoading(true);
+      const response = await ApiNode.get(`guest/data/kelebihan`);
+      if (response.hasOwnProperty("data")) {
+        if (response.data) {
+          setDataRes(response.data);
+          setLoading(false);
+          // console.log(response);
+          return response.data;
+        }
+        setLoading(false);
+        setError(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        return null;
+      }
+    } catch (error) {
+      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
+      console.error(error);
+      return false;
+    }
+  };
+  fn_get_kelebihan();
+
+  // Membersihkan sinyal saat komponen di-unmount (opsional).
+  onCleanup(() => {
+    setDataRes(null);
+    setLoading(false);
+    setError(false);
+  });
+
+  return (
+    <>
+      {" "}
+      {() => (
+        <Switch>
+          <Match when={loading()}>
+            <div className="space-y-2">
+              <LoadingComponent />
+              <SkeletonPaket />
+            </div>
+          </Match>
+          <Match when={error()}>
+            <FailedComponent message="Gagal mendapatkan data!" />
+          </Match>
+          <Match when={dataRes()}>
+            <MenuHero_Component data={dataRes()} />
+          </Match>
+          <Match>
+            <FailedComponent message={`Data Tidak Tersedia`} />
+          </Match>
+        </Switch>
+      )}
+    </>
+  );
+};
+
+const MenuHero_Component = (props) => {
+  const data = props.data;
   const backgroundImage = `url(${img_smk_galeri_06})`;
   return (
     <>
@@ -1194,10 +1337,11 @@ const MenuHero = () => {
                         />
                       </svg>
                     </div>
-                    <h6 class="text-xl font-semibold">Fasilitas Lengkap</h6>
-                    <p class="mt-2 mb-4 text-gray-600">
-                      Penunjang belajar dengan kualitas Terbaik.
-                    </p>
+                    <h6 class="text-xl font-semibold">{data[0].title}</h6>
+                    <p
+                      class="mt-2 mb-4 text-gray-600"
+                      innerHTML={data[0].desc}
+                    ></p>
                   </div>
                 </div>
               </div>
@@ -1220,10 +1364,11 @@ const MenuHero = () => {
                         />
                       </svg>
                     </div>
-                    <h6 class="text-xl font-semibold">Lingkungan Nyaman</h6>
-                    <p class="mt-2 mb-4 text-gray-600">
-                      Berada di lingkungan yang asri, aman, dan kondusif.
-                    </p>
+                    <h6 class="text-xl font-semibold">{data[1].title}</h6>
+                    <p
+                      class="mt-2 mb-4 text-gray-600"
+                      innerHTML={data[1].desc}
+                    ></p>
                   </div>
                 </div>
               </div>
@@ -1246,10 +1391,11 @@ const MenuHero = () => {
                         />
                       </svg>
                     </div>
-                    <h6 class="text-xl font-semibold">Pengajar Kompeten</h6>
-                    <p class="mt-2 mb-4 text-gray-600">
-                      Guru yang up-to-date dengan perkembangan industri.
-                    </p>
+                    <h6 class="text-xl font-semibold">{data[2].title}</h6>
+                    <p
+                      class="mt-2 mb-4 text-gray-600"
+                      innerHTML={data[2].desc}
+                    ></p>
                   </div>
                 </div>
               </div>
@@ -1945,4 +2091,117 @@ const MenuKerjaSAMA = () => {
     </>
   );
 };
+
 export default HomeIndex;
+
+const SkeletonPaket = () => {
+  return (
+    <>
+      <div
+        role="status"
+        class="max-w-md p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700"
+      >
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+          </div>
+          <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+        </div>
+        <div class="flex items-center justify-between pt-4">
+          <div>
+            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+          </div>
+          <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+        </div>
+        <div class="flex items-center justify-between pt-4">
+          <div>
+            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+          </div>
+          <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+        </div>
+        <div class="flex items-center justify-between pt-4">
+          <div>
+            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+          </div>
+          <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+        </div>
+        <div class="flex items-center justify-between pt-4">
+          <div>
+            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+          </div>
+          <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+        </div>
+        <span class="sr-only">Loading...</span>
+      </div>
+    </>
+  );
+};
+
+const LoadingComponent = () => {
+  return (
+    <>
+      <button
+        disabled
+        type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+      >
+        <svg
+          aria-hidden="true"
+          role="status"
+          class="inline w-4 h-4 mr-3 text-white animate-spin"
+          viewBox="0 0 100 101"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="#E5E7EB"
+          />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentColor"
+          />
+        </svg>
+        Loading...
+      </button>
+    </>
+  );
+};
+
+const FailedComponent = (props) => {
+  const message = props.message;
+  return (
+    <>
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 "
+        role="alert"
+      >
+        <svg
+          class="flex-shrink-0 inline w-4 h-4 mr-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">Error!</span> {message}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export function fn_truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.slice(0, maxLength) + "..."; // Tambahkan tanda elipsis jika teks terpotong
+  }
+  return text;
+}
