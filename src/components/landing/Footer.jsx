@@ -1,4 +1,8 @@
 import logo_semkadip from "@/assets/img/smk/logo_semkadip.png";
+import ApiNode from "@/axios/axiosNode";
+import { A } from "@solidjs/router";
+import { createSignal, onCleanup } from "solid-js";
+
 const Footer = () => {
   return (
     <>
@@ -30,24 +34,42 @@ const Footer = () => {
               </p>
 
               <div class="flex flex-col items-start mt-5 space-y-2">
-                <a
-                  href="#"
+                <A
+                  href={`/home`}
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
                   BERANDA
-                </a>
-                <a
-                  href="#"
+                </A>
+                <A
+                  href={`/pages/visimisi`}
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
                   VISI DAN MISI
-                </a>
-                <a
-                  href="#"
+                </A>
+                <A
+                  href={`/pages/akreditasi`}
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
                   AKREDITASI
-                </a>
+                </A>
+                <A
+                  href={`/pages/hubunganindustri`}
+                  class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
+                >
+                  HUBUNGAN INDUSTRI
+                </A>
+                <A
+                  href={`/pages/fasilitas`}
+                  class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
+                >
+                  FASILITAS
+                </A>
+                <A
+                  href={`/pages/prestasi`}
+                  class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
+                >
+                  PRESTASI
+                </A>
               </div>
             </div>
 
@@ -57,24 +79,7 @@ const Footer = () => {
               </p>
 
               <div class="flex flex-col items-start mt-5 space-y-2">
-                <a
-                  href="#"
-                  class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  TEKNIK KOMUNIKASI DAN JARINGAN
-                </a>
-                <a
-                  href="#"
-                  class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  DESAIN KOMUNIKASI DAN VISUAL
-                </a>
-                <a
-                  href="#"
-                  class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  FARMASI
-                </a>
+                <ProgramkeahlianFooter />
               </div>
             </div>
           </div>
@@ -109,4 +114,81 @@ const Footer = () => {
   );
 };
 
+const ProgramkeahlianFooter = () => {
+  const [dataRes, setDataRes] = createSignal(null);
+  const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal(false);
+  const fn_get_kelebihan = async () => {
+    try {
+      setLoading(true);
+      const response = await ApiNode.get(`guest/data/programkeahlian`);
+      if (response.hasOwnProperty("data")) {
+        if (response.data) {
+          setDataRes(response.data);
+          setLoading(false);
+          // console.log(response);
+          return response.data;
+        }
+        setLoading(false);
+        setError(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        return null;
+      }
+    } catch (error) {
+      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
+      console.error(error);
+      return false;
+    }
+  };
+  fn_get_kelebihan();
+
+  // Membersihkan sinyal saat komponen di-unmount (opsional).
+  onCleanup(() => {
+    setDataRes(null);
+    setLoading(false);
+    setError(false);
+  });
+
+  return (
+    <>
+      {" "}
+      {() => (
+        <Switch>
+          <Match when={loading()}>
+            <div className="space-y-2">
+              <span>Loading..</span>
+            </div>
+          </Match>
+          <Match when={error()}>
+            <span>Err..</span>
+          </Match>
+          <Match when={dataRes()}>
+            <ProgramkeahlianFooterComponent data={dataRes()} />
+          </Match>
+          <Match>
+            <span>Err..</span>
+          </Match>
+        </Switch>
+      )}
+    </>
+  );
+};
+
+const ProgramkeahlianFooterComponent = (props) => {
+  const data = props.data;
+  return (
+    <>
+      {data.map((item, index) => (
+        <A
+          href={`/pages/programkeahlian/${item.id}`}
+          class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
+        >
+          {item.title}
+        </A>
+      ))}
+    </>
+  );
+};
 export default Footer;

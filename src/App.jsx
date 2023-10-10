@@ -48,6 +48,12 @@ const routes = [
         path: "/prestasi",
         component: lazy(() => import("./pages/landing/tentang/prestasi.jsx")),
       },
+      {
+        path: "/programkeahlian/:id",
+        component: lazy(() =>
+          import("./pages/landing/tentang/programkeahlian.jsx")
+        ),
+      },
       // !jurusan
       {
         path: "/jurusan",

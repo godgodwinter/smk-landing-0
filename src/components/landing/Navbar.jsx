@@ -3,6 +3,8 @@ import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
 import { A } from "@solidjs/router";
+import ApiNode from "@/axios/axiosNode";
+import { createSignal, onCleanup } from "solid-js";
 const Navbar = () => {
   return (
     <>
@@ -62,31 +64,7 @@ const Navbar = () => {
                     </details>
                   </li>
                   <li tabindex="0">
-                    <details>
-                      <summary>PROGRAM KEAHLIAN</summary>
-                      <ul class="p-2">
-                        <li>
-                          <A href="/pages/jurusan/tjkt">
-                            Teknik Jaringan Komputer Telekomunikasi
-                          </A>
-                        </li>
-                        <li>
-                          <a>Desain Komunikasi Visual</a>
-                        </li>
-                        <li>
-                          <a>Farmasi</a>
-                        </li>
-                        <li>
-                          <a>Layanan Kesehatan</a>
-                        </li>
-                        <li>
-                          <a>Perhotelan</a>
-                        </li>
-                        <li>
-                          <a>Teknik Otomotif</a>
-                        </li>
-                      </ul>
-                    </details>
+                    <SubmenuProgramkeahlian />
                   </li>
                   <li>
                     <A href="/pages/berita">BERITA</A>
@@ -139,31 +117,7 @@ const Navbar = () => {
                   </details>
                 </li>
                 <li tabindex="0">
-                  <details>
-                    <summary>PROGRAM KEAHLIAN</summary>
-                    <ul class="p-2">
-                      <li>
-                        <A href="/pages/jurusan/tjkt">
-                          Teknik Jaringan Komputer Telekomunikasi
-                        </A>
-                      </li>
-                      <li>
-                        <a>Desain Komunikasi Visual</a>
-                      </li>
-                      <li>
-                        <a>Farmasi</a>
-                      </li>
-                      <li>
-                        <a>Layanan Kesehatan</a>
-                      </li>
-                      <li>
-                        <a>Perhotelan</a>
-                      </li>
-                      <li>
-                        <a>Teknik Otomotif</a>
-                      </li>
-                    </ul>
-                  </details>
+                  <SubmenuProgramkeahlian />
                 </li>
                 <li>
                   <A href="/pages/berita">BERITA</A>
@@ -191,3 +145,81 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const SubmenuProgramkeahlian = () => {
+  const [dataRes, setDataRes] = createSignal(null);
+  const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal(false);
+  const fn_get_kelebihan = async () => {
+    try {
+      setLoading(true);
+      const response = await ApiNode.get(`guest/data/programkeahlian`);
+      if (response.hasOwnProperty("data")) {
+        if (response.data) {
+          setDataRes(response.data);
+          setLoading(false);
+          // console.log(response);
+          return response.data;
+        }
+        setLoading(false);
+        setError(true);
+      } else {
+        setLoading(false);
+        setError(true);
+        return null;
+      }
+    } catch (error) {
+      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
+      console.error(error);
+      return false;
+    }
+  };
+  fn_get_kelebihan();
+
+  // Membersihkan sinyal saat komponen di-unmount (opsional).
+  onCleanup(() => {
+    setDataRes(null);
+    setLoading(false);
+    setError(false);
+  });
+
+  return (
+    <>
+      {" "}
+      {() => (
+        <Switch>
+          <Match when={loading()}>
+            <div className="space-y-2">
+              <span>Loading..</span>
+            </div>
+          </Match>
+          <Match when={error()}>
+            <span>Err..</span>
+          </Match>
+          <Match when={dataRes()}>
+            <SubmenuProgramkeahlianComponent data={dataRes()} />
+          </Match>
+          <Match>
+            <span>Err..</span>
+          </Match>
+        </Switch>
+      )}
+    </>
+  );
+};
+
+const SubmenuProgramkeahlianComponent = (props) => {
+  const data = props.data;
+  return (
+    <details>
+      <summary>TENTANG KAMI</summary>
+      <ul class="p-2">
+        {data.map((item, index) => (
+          <li>
+            <A href={`/pages/programkeahlian/${item.id}`}>{item.title}</A>
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+};
