@@ -42,10 +42,10 @@ const HomeIndex = () => {
           transition={{ duration: 2, easing: "ease-in-out" }}
         >
           <MenuDua />
-          {/* <MenuSatu /> */}
         </Motion.div>
         <MenuAlumni />
         <MenuKerjaSAMA />
+        {/* <MenuSatu /> */}
         {/* <TWStarterKit /> */}
       </div>
     </>
@@ -1125,17 +1125,17 @@ const MenuHero_Component = (props) => {
           <div class="container relative mx-auto">
             <div class="items-center flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div class="pr-12">
-                  <div className="flex justify-center pb-10">
+                <div class="pr-0">
+                  <div className="flex justify-center pb-10 pt-10 ">
                     {" "}
                     <img
                       src={logo_semkadip}
-                      class="h-36 mr-3"
+                      class="h-20 md:h-36 mr-3"
                       alt="LOGO SEMKADIP"
                     />
                     <img
                       src={logo_semkadip_2}
-                      class="h-36 mr-3"
+                      class="h-20 md:h-36 mr-3"
                       alt="LOGO SEMKADIP"
                     />
                   </div>
@@ -1819,20 +1819,28 @@ const MenuKerjaSAMA = () => {
     <>
       <section class="bg-white py-20 lg:py-[120px]">
         <div class="container mx-auto">
-          <div class="-mx-4 flex flex-wrap">
+          <div class="md:-mx-4 flex flex-wrap">
             <div class="w-full px-4">
               <div class="flex flex-wrap items-center justify-center gap-2">
                 <a
                   href="javascript:void(0)"
                   class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
                 >
-                  <img src={img_photo_maspion} alt="image" class="h-50 w-50" />
+                  <img
+                    src={img_photo_maspion}
+                    alt="image"
+                    class="h-20 w-20 md:h-50 md:w-50"
+                  />
                 </a>
                 <a
                   href="javascript:void(0)"
                   class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
                 >
-                  <img src={img_photo_disnaker} alt="image" class="h-50 w-50" />
+                  <img
+                    src={img_photo_disnaker}
+                    alt="image"
+                    class="h-20 w-20 md:h-50 md:w-50"
+                  />
                 </a>
               </div>
             </div>
