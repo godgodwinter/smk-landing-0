@@ -1,4 +1,5 @@
 import logo_semkadip from "@/assets/img/smk/logo_semkadip.png";
+import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
 import { A } from "@solidjs/router";
@@ -96,9 +97,12 @@ const Navbar = () => {
                 </ul>
               </div>
               <A href="/" class="flex items-center">
-                <img src={logo_semkadip} class="h-8 mr-3" alt="LOGO SEMKADIP">
-                  {" "}
-                </img>
+                <img src={logo_semkadip} class="h-8 mr-3" alt="LOGO SEMKADIP" />
+                <img
+                  src={logo_semkadip_2}
+                  class="h-8 mr-3"
+                  alt="LOGO SEMKADIP"
+                />{" "}
                 <span class="self-center text-2xl font-semibold whitespace-nowrap ">
                   SEMKADIP
                 </span>

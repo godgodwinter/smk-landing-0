@@ -1,9 +1,9 @@
 import { Motion } from "@motionone/solid";
 import logo_semkadip from "@/assets/img/smk/logo_semkadip.png";
-import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
 import img_random_illu from "@/assets/img/random/Illustration2.png";
+import img_smk_kepsek from "@/assets/img/smk/galeri/P. IHYA-min.jpg";
 import img_smk_galeri_06 from "@/assets/img/smk/galeri/06.jpg";
 import img_smk_galeri_05 from "@/assets/img/smk/galeri/05.jpg";
 import img_smk_galeri_04 from "@/assets/img/smk/galeri/04.jpg";
@@ -16,9 +16,7 @@ import img_brain from "@/assets/img/svg/brain.svg";
 import img_timer from "@/assets/img/svg/timer.svg";
 import img_collaboration from "@/assets/img/svg/collaboration.png";
 import logo_microsoft from "@/assets/img/svg/microsoft.svg";
-import img_photo_kepsek from "@/assets/img/smk/galeri/P. IHYA-min.jpg";
-import img_photo_maspion from "@/assets/img/smk/kerjasama/kerjasama maspion it.png";
-import img_photo_disnaker from "@/assets/img/smk/kerjasama/disnaker kab malng.png";
+import img_photo_kepsek from "../../assets/img/smk/galeri/05.jpg";
 
 import "flowbite";
 import { A } from "@solidjs/router";
@@ -40,7 +38,7 @@ const HomeIndex = () => {
           transition={{ duration: 2, easing: "ease-in-out" }}
         >
           <MenuDua />
-          {/* <MenuSatu /> */}
+          <MenuSatu />
         </Motion.div>
         <MenuAlumni />
         <MenuKerjaSAMA />
@@ -662,69 +660,6 @@ const MenuAgenda = () => {
 };
 
 const MenuAlumni = () => {
-  const [dataRes, setDataRes] = createSignal(null);
-  const [loading, setLoading] = createSignal(true);
-  const [error, setError] = createSignal(false);
-  const fn_get_kelebihan = async () => {
-    try {
-      setLoading(true);
-      const response = await ApiNode.get(`guest/data/alumni`);
-      if (response.hasOwnProperty("data")) {
-        if (response.data) {
-          setDataRes(response.data);
-          setLoading(false);
-          // console.log(response);
-          return response.data;
-        }
-        setLoading(false);
-        setError(true);
-      } else {
-        setLoading(false);
-        setError(true);
-        return null;
-      }
-    } catch (error) {
-      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
-      console.error(error);
-      return false;
-    }
-  };
-  fn_get_kelebihan();
-
-  // Membersihkan sinyal saat komponen di-unmount (opsional).
-  onCleanup(() => {
-    setDataRes(null);
-    setLoading(false);
-    setError(false);
-  });
-
-  return (
-    <>
-      {" "}
-      {() => (
-        <Switch>
-          <Match when={loading()}>
-            <div className="space-y-2">
-              <LoadingComponent />
-              <SkeletonPaket />
-            </div>
-          </Match>
-          <Match when={error()}>
-            <FailedComponent message="Gagal mendapatkan data!" />
-          </Match>
-          <Match when={dataRes()}>
-            <MenuAlumniComponent data={dataRes()} />
-          </Match>
-          <Match>
-            <FailedComponent message={`Data Tidak Tersedia`} />
-          </Match>
-        </Switch>
-      )}
-    </>
-  );
-};
-
-const MenuAlumniComponent = () => {
   return (
     <>
       <div class="container my-24 mx-auto md:px-6">
@@ -1016,124 +951,18 @@ const MenuAlumniComponent = () => {
 };
 
 const MenuSambutanKepsek = () => {
-  const [dataRes, setDataRes] = createSignal(null);
-  const [loading, setLoading] = createSignal(true);
-  const [error, setError] = createSignal(false);
-  const fn_get_kelebihan = async () => {
-    try {
-      setLoading(true);
-      const response = await ApiNode.get(`guest/data/sambutankepsek`);
-      if (response.hasOwnProperty("data")) {
-        if (response.data) {
-          setDataRes(response.data);
-          setLoading(false);
-          // console.log(response);
-          return response.data;
-        }
-        setLoading(false);
-        setError(true);
-      } else {
-        setLoading(false);
-        setError(true);
-        return null;
-      }
-    } catch (error) {
-      // Toast.danger("Error", `Gagal menghubungkan ke Server!`);
-      console.error(error);
-      return false;
-    }
-  };
-  fn_get_kelebihan();
-
-  // Membersihkan sinyal saat komponen di-unmount (opsional).
-  onCleanup(() => {
-    setDataRes(null);
-    setLoading(false);
-    setError(false);
-  });
-
   return (
     <>
-      {" "}
-      {() => (
-        <Switch>
-          <Match when={loading()}>
-            <div className="space-y-2">
-              <LoadingComponent />
-              <SkeletonPaket />
-            </div>
-          </Match>
-          <Match when={error()}>
-            <FailedComponent message="Gagal mendapatkan data!" />
-          </Match>
-          <Match when={dataRes()}>
-            <MenuSambutanKepsekComponent data={dataRes()} />
-          </Match>
-          <Match>
-            <FailedComponent message={`Data Tidak Tersedia`} />
-          </Match>
-        </Switch>
-      )}
-    </>
-  );
-};
-const MenuSambutanKepsekComponent = (props) => {
-  const data = props.data;
-  return (
-    <>
-      <div class="flex flex-wrap items-center mt-32">
-        <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-          <div class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59"
-              />
-            </svg>
-          </div>
-          <h3 class="text-3xl mb-2 font-semibold leading-normal">
-            {data.title}
-          </h3>
-          <div innerHTML={data.content}></div>
-        </div>
-        <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-          <div class="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-sky-400">
-            <img
-              alt="..."
-              src={img_photo_kepsek}
-              class="w-full align-middle rounded-t-lg"
-            />
-            <blockquote class="relative p-8 mb-4">
-              <svg
-                preserveAspectRatio="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 583 95"
-                class="absolute left-0 w-full block"
-                style="height: 95px; top: -94px;"
-              >
-                <polygon
-                  points="-30,95 583,95 583,65"
-                  class="text-sky-400 fill-current"
-                ></polygon>
-              </svg>
-              <h4 class="text-xl font-bold text-black">
-                KEPALA SEKOLAH SMK DIPONEGORO TUMPANG
-              </h4>
-              <p class="text-md font-light mt-2 text-black">
-                Bpk. IHYA ULUMUDIN,S.Kom,MM.
-              </p>
-            </blockquote>
+      <section class="bg-white  py-8">
+        <div class="container max-w-5xl mx-auto m-8">
+          <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+            MENU Sambutan
+          </h1>
+          <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
@@ -1267,6 +1096,111 @@ const MenuStatistik_component = (props) => {
     </>
   );
 };
+// const MenuStatistik_component = (props) => {
+//   function fn_getTotalStudents(data) {
+//     let total = 0;
+//     for (const item of data) {
+//       total += item.jml_siswa;
+//     }
+//     return total;
+//   }
+
+//   const data = props.data;
+//   const [total, setTotal] = createSignal(0);
+//   const [tkjt, setTkjt] = createSignal(0);
+//   const [dkv, setdkv] = createSignal(0);
+//   const [oto, setoto] = createSignal(0);
+//   const [kesehatan, setkesehatan] = createSignal(0);
+//   const [perhotelan, setperhotelan] = createSignal(0);
+//   const [farmasi, setfarmasi] = createSignal(0);
+
+//   // Tentukan angka akhir yang Anda inginkan
+//   const targetTotal = data ? fn_getTotalStudents(data) : 1;
+//   const targetTkjt = 283;
+//   const targetoto = 157;
+//   const targetdkv = 119;
+//   const targetkesehatan = 116;
+//   const targetperhotelan = 75;
+//   const targetfarmasi = 27;
+
+//   // Tentukan durasi animasi dalam milidetik (misalnya, 5 detik)
+//   const animationDuration = 5000;
+
+//   // Fungsi untuk mengatur animasi penambahan angka
+//   const animateNumber = (startValue, endValue, duration, setter) => {
+//     const startTime = Date.now();
+//     const update = () => {
+//       const currentTime = Date.now();
+//       const elapsedTime = currentTime - startTime;
+//       const progress = Math.min(1, elapsedTime / duration);
+//       const animatedValue = Math.round(
+//         startValue + (endValue - startValue) * progress
+//       );
+//       setter(animatedValue);
+//       if (progress < 1) {
+//         requestAnimationFrame(update);
+//       }
+//     };
+//     requestAnimationFrame(update);
+//   };
+
+//   // Mulai animasi ketika komponen di-mount
+//   createEffect(() => {
+//     animateNumber(0, targetTotal, animationDuration, setTotal);
+//     animateNumber(0, targetTkjt, animationDuration, setTkjt);
+//     animateNumber(0, targetdkv, animationDuration, setdkv);
+//     animateNumber(0, targetoto, animationDuration, setoto);
+//     animateNumber(0, targetkesehatan, animationDuration, setkesehatan);
+//     animateNumber(0, targetperhotelan, animationDuration, setperhotelan);
+//     animateNumber(0, targetfarmasi, animationDuration, setfarmasi);
+//   });
+
+//   return (
+//     <>
+//       <div className="flex justify-center w-full">
+//         <div class="stats stats-vertical lg:stats-horizontal shadow">
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div className="stat-value">{total()}</div>
+//             <div class="stat-desc">TOTAL SISWA</div>
+//           </div>
+
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div className="stat-value">{tkjt()}</div>
+//             <div class="stat-desc">↗︎ TKJT</div>
+//           </div>
+
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{oto()}</div>
+//             <div class="stat-desc"> OTO</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{dkv()}</div>
+//             <div class="stat-desc"> DKV</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{kesehatan()}</div>
+//             <div class="stat-desc">KESEHATAN</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{perhotelan()}</div>
+//             <div class="stat-desc">↘︎PERHOTELAN</div>
+//           </div>
+//           <div class="stat">
+//             <div class="stat-title"></div>
+//             <div class="stat-value">{farmasi()}</div>
+//             <div class="stat-desc">FARMASI</div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
 
 const MenuHero = () => {
   const [dataRes, setDataRes] = createSignal(null);
@@ -1354,19 +1288,6 @@ const MenuHero_Component = (props) => {
             <div class="items-center flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div class="pr-12">
-                  <div className="flex justify-center pb-10">
-                    {" "}
-                    <img
-                      src={logo_semkadip}
-                      class="h-36 mr-3"
-                      alt="LOGO SEMKADIP"
-                    />
-                    <img
-                      src={logo_semkadip_2}
-                      class="h-36 mr-3"
-                      alt="LOGO SEMKADIP"
-                    />
-                  </div>
                   <h1 class="text-white font-semibold text-5xl">
                     SMK DIPONEGORO TUMPANG
                   </h1>
@@ -1482,7 +1403,84 @@ const MenuHero_Component = (props) => {
             </div>
 
             <MenuStatistik />
-            <MenuSambutanKepsek />
+
+            <div class="flex flex-wrap items-center mt-32">
+              <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <div class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-3xl mb-2 font-semibold leading-normal">
+                  SAMBUTAN KEPALA SEKOLAH
+                </h3>
+                <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+                  Selamat datang di website SMK Diponegoro Tumpang, tempat di
+                  mana kami berupaya untuk memberikan akses mudah kepada seluruh
+                  anggota komunitas sekolah kami, baik itu pimpinan, guru,
+                  karyawan, siswa, dan juga masyarakat umum, agar dapat
+                  mengakses informasi seputar sekolah kami.
+                </p>
+                <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+                  Website ini adalah wujud dari komitmen kami untuk terus
+                  berupaya memberikan pelayanan yang lebih baik. Kami menyadari
+                  bahwa masih banyak kekurangan dalam penyajian informasi di
+                  situs ini. Oleh karena itu, kami sangat mengharapkan masukan,
+                  saran, dan kritik dari seluruh civitas akademika dan
+                  masyarakat umum demi perbaikan yang lebih baik.
+                </p>
+                <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+                  Kami percaya bahwa website ini dapat menjadi saluran interaksi
+                  yang positif, membangun hubungan erat di antara semua pihak
+                  yang terlibat dalam dunia pendidikan. Mari kita bersama-sama
+                  bekerja dan berkarya dengan tekad kuat, dengan harapan agar
+                  usaha kita mendapatkan ridho dari Yang Maha Kuasa, demi
+                  kemajuan bersama dan masa depan yang lebih baik bagi generasi
+                  penerus bangsa. Terima kasih atas kunjungan Anda.
+                </p>
+                <a href="#" class="font-bold text-gray-800 mt-8">
+                  Ihya Ulumudin, S.Kom, M.M
+                </a>
+              </div>
+              <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                <div class="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-sky-400">
+                  <img
+                    alt="..."
+                    src={img_photo_kepsek}
+                    class="w-full align-middle rounded-t-lg"
+                  />
+                  <blockquote class="relative p-8 mb-4">
+                    <svg
+                      preserveAspectRatio="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 583 95"
+                      class="absolute left-0 w-full block"
+                      style="height: 95px; top: -94px;"
+                    >
+                      <polygon
+                        points="-30,95 583,95 583,65"
+                        class="text-sky-400 fill-current"
+                      ></polygon>
+                    </svg>
+                    <h4 class="text-xl font-bold text-black">KEPALA SEKOLAH</h4>
+                    <p class="text-md font-light mt-2 text-black">
+                      SMK DIPONEGORO TUMPANG
+                    </p>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -2052,15 +2050,39 @@ const MenuKerjaSAMA = () => {
               <div class="flex flex-wrap items-center justify-center gap-2">
                 <a
                   href="javascript:void(0)"
-                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px] border p-5 rounded-lg hover:p-2 hover:shadow-lg"
                 >
-                  <img src={img_photo_maspion} alt="image" class="h-50 w-50" />
+                  <img src={logo_microsoft} alt="image" class="h-10 w-full" />
                 </a>
                 <a
                   href="javascript:void(0)"
                   class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
                 >
-                  <img src={img_photo_disnaker} alt="image" class="h-50 w-50" />
+                  <img
+                    src="https://cdn.tailgrids.com/2.0/image/assets/images/brands/lineicons.svg"
+                    alt="image"
+                    class="h-10 w-full"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src="https://cdn.tailgrids.com/2.0/image/assets/images/brands/uideck.svg"
+                    alt="image"
+                    class="h-10 w-full"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src="https://cdn.tailgrids.com/2.0/image/assets/images/brands/ayroui.svg"
+                    alt="image"
+                    class="h-10 w-full"
+                  />
                 </a>
               </div>
             </div>
