@@ -2,6 +2,10 @@ import logo_semkadip from "@/assets/img/smk/logo_semkadip.png";
 import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
+import youtubeIcon from "@/assets/img/svg/youtube-icon.svg";
+import tiktokIcon from "@/assets/img/svg/tiktok-icon.svg";
+// import { BsTiktok, BsYoutube } from "solid-icons/bs";
+
 import { A } from "@solidjs/router";
 import ApiNode from "@/axios/axiosNode";
 import { createSignal, onCleanup } from "solid-js";
@@ -38,7 +42,7 @@ const Navbar = () => {
                   </li>
                   <li tabindex="0">
                     <details>
-                      <summary>TENTANG KAMI</summary>
+                      <summary>PROGRAM JURUSAN</summary>
                       <ul class="p-2">
                         <li>
                           <A href="/pages/profile">Profile Sekolah</A>
@@ -70,7 +74,7 @@ const Navbar = () => {
                     <A href="/pages/berita">BERITA</A>
                   </li>
                   <li>
-                    <A href="/pages/contact">HUBUNGI KAMI</A>
+                    <A href="/pages/contact">MADIN</A>
                   </li>
                 </ul>
               </div>
@@ -98,9 +102,9 @@ const Navbar = () => {
                       <li>
                         <A href="/pages/profile">Profile Sekolah</A>
                       </li>
-                      <li>
+                      {/* <li>
                         <A href="/pages/visimisi">Visi dan Misi</A>
-                      </li>
+                      </li> */}
                       <li>
                         <A href="/pages/akreditasi">Akreditasi</A>
                       </li>
@@ -123,18 +127,36 @@ const Navbar = () => {
                   <A href="/pages/berita">BERITA</A>
                 </li>
                 <li>
-                  <A href="/pages/contact">HUBUNGI KAMI</A>
+                  <A href="/pages/contact">MADIN</A>
                 </li>
               </ul>
             </div>
             <div class="navbar-end">
               <div className="flex justify-between gap-2">
-                <a href="#">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100075930044784"
+                  target="_blank"
+                >
                   <img src={logo_fb} alt="" width={25} />
                 </a>
-                <a href="#">
+                <a
+                  href="https://www.instagram.com/semkadipbisa"
+                  target="_blank"
+                >
                   <img src={logo_ig} alt="" width={25} />
                 </a>
+                <a href="https://www.youtube.com/@SemkadipTV" target="_blank">
+                  <img src={youtubeIcon} alt="" width={25} />
+                </a>{" "}
+                <span className="hidden md:block">
+                  {" "}
+                  <a
+                    href="https://www.tiktok.com/@semkadip_bisa?_t=8gX3WbRDFly&_r=1"
+                    target="_blank"
+                  >
+                    <img src={tiktokIcon} alt="" width={25} />
+                  </a>
+                </span>
               </div>
             </div>
           </div>
@@ -212,7 +234,7 @@ const SubmenuProgramkeahlianComponent = (props) => {
   const data = props.data;
   return (
     <details>
-      <summary>TENTANG KAMI</summary>
+      <summary>PROGRAM JURUSAN</summary>
       <ul class="p-2">
         {data.map((item, index) => (
           <li>

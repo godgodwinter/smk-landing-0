@@ -19,6 +19,9 @@ import logo_microsoft from "@/assets/img/svg/microsoft.svg";
 import img_photo_kepsek from "@/assets/img/smk/galeri/P. IHYA-min.jpg";
 import img_photo_maspion from "@/assets/img/smk/kerjasama/kerjasama maspion it.png";
 import img_photo_disnaker from "@/assets/img/smk/kerjasama/disnaker kab malng.png";
+import img_kerjasama_1 from "@/assets/img/smk/kerjasama/img_kerjasama_1.jpg";
+import img_kerjasama_2 from "@/assets/img/smk/kerjasama/img_kerjasama_2.jpg";
+import img_kerjasama_3 from "@/assets/img/smk/kerjasama/img_kerjasama_3.jpg";
 
 import img_tumbnail_01 from "@/assets/img/tumbnail/03.jpg";
 
@@ -26,11 +29,13 @@ import "flowbite";
 import { A } from "@solidjs/router";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import ApiNode from "@/axios/axiosNode";
+import WAFloating from "./WAFloating";
 
 const HomeIndex = () => {
   return (
     <>
       <div>
+        <WAFloating />
         <Motion.div
           animate={{ opacity: [0, 1] }}
           transition={{ duration: 2, easing: "ease-in-out" }}
@@ -900,7 +905,7 @@ const MenuSambutanKepsekComponent = (props) => {
                 KEPALA SEKOLAH SMK DIPONEGORO TUMPANG
               </h4>
               <p class="text-md font-light mt-2 text-black">
-                Bpk. IHYA ULUMUDIN,S.Kom,MM.
+                IHYA ULUMUDIN,S.Kom,MM.
               </p>
             </blockquote>
           </div>
@@ -1143,6 +1148,9 @@ const MenuHero_Component = (props) => {
                     SMK DIPONEGORO TUMPANG
                   </h1>
                   <p class="mt-4 text-lg text-gray-300">Sekolah Sak Ngajine</p>
+                  <p class="mt-4 text-lg text-gray-300">
+                    Sekolah Pusat Keunggulan
+                  </p>
                 </div>
               </div>
             </div>
@@ -1838,6 +1846,36 @@ const MenuKerjaSAMA = () => {
                 >
                   <img
                     src={img_photo_disnaker}
+                    alt="image"
+                    class="h-20 w-20 md:h-50 md:w-50"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src={img_kerjasama_1}
+                    alt="image"
+                    class="h-20 w-20 md:h-50 md:w-50"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src={img_kerjasama_2}
+                    alt="image"
+                    class="h-20 w-20 md:h-50 md:w-50"
+                  />
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  class="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]  border p-5 rounded-lg hover:p-2 hover:shadow-lg"
+                >
+                  <img
+                    src={img_kerjasama_3}
                     alt="image"
                     class="h-20 w-20 md:h-50 md:w-50"
                   />
