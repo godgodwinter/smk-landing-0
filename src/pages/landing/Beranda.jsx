@@ -29,13 +29,13 @@ import "flowbite";
 import { A } from "@solidjs/router";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import ApiNode from "@/axios/axiosNode";
-import WAFloating from "./WAFloating";
+// import WAFloating from "./WAFloating";
 
 const HomeIndex = () => {
   return (
     <>
       <div>
-        <WAFloating />
+        {/* <WAFloating /> */}
         <Motion.div
           animate={{ opacity: [0, 1] }}
           transition={{ duration: 2, easing: "ease-in-out" }}

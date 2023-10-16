@@ -70,9 +70,9 @@ const Navbar = () => {
                   <li tabindex="0">
                     <SubmenuProgramkeahlian />
                   </li>
-                  <li>
+                  {/* <li>
                     <A href="/pages/berita">BERITA</A>
-                  </li>
+                  </li> */}
                   <li>
                     <A href="/pages/contact">MADIN</A>
                   </li>
@@ -123,9 +123,9 @@ const Navbar = () => {
                 <li tabindex="0">
                   <SubmenuProgramkeahlian />
                 </li>
-                <li>
+                {/* <li>
                   <A href="/pages/berita">BERITA</A>
-                </li>
+                </li> */}
                 <li>
                   <A href="/pages/contact">MADIN</A>
                 </li>

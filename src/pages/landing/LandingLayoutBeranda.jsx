@@ -2,11 +2,13 @@ import { Outlet } from "@solidjs/router";
 import { Motion } from "@motionone/solid";
 import Navbar from "../../components/landing/Navbar";
 import Footer from "../../components/landing/Footer";
+import WAFloating from "./WAFloating";
 
 const LandingLayout = () => {
   return (
     <>
       <div>
+        <WAFloating />
         <Navbar />
         <Motion.div
           animate={{ opacity: [0, 1] }}
