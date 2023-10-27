@@ -4,6 +4,7 @@ import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
 import img_random_illu from "@/assets/img/random/Illustration2.png";
+import img_hero_smkdip from "@/assets/img/smk/galeri/hero_smkdip.png";
 import img_smk_galeri_06 from "@/assets/img/smk/galeri/06.jpg";
 import img_smk_galeri_05 from "@/assets/img/smk/galeri/05.jpg";
 import img_smk_galeri_04 from "@/assets/img/smk/galeri/04.jpg";
@@ -1110,7 +1111,7 @@ const MenuHero = () => {
 
 const MenuHero_Component = (props) => {
   const data = props.data;
-  const backgroundImage = `url(${img_smk_galeri_06})`;
+  const backgroundImage = `url(${img_hero_smkdip})`;
   return (
     <>
       <main>
@@ -1124,10 +1125,10 @@ const MenuHero_Component = (props) => {
           >
             <span
               id="blackOverlay"
-              class="w-full h-full absolute opacity-75 bg-black"
+              class="w-full h-full absolute opacity-25 bg-black"
             ></span>
           </div>
-          <div class="container relative mx-auto">
+          {/* <div class="container relative mx-auto">
             <div class="items-center flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div class="pr-0">
@@ -1154,7 +1155,7 @@ const MenuHero_Component = (props) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div
             class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
             style="height: 70px;"

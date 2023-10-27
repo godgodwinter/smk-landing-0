@@ -89,15 +89,15 @@ const VisiMisiContent = (props) => {
       <main class="pt-8 pb-16 lg:pt-0 lg:pb-24  antialiased ">
         <div class="flex justify-between px-4 mx-auto ">
           <article class="prose mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue ">
-            <header class="mb-4 lg:mb-6 not-format">
+            {/* <header class="mb-4 lg:mb-6 not-format">
               <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl ">
                 {data.title}
               </h1>
-            </header>
+            </header> */}
 
             <div>
               <div class="md:py-2 px-4 lg:flex flex-wrap gap-4">
-                <div class="w-full lg:w-full">
+                {/* <div class="w-full lg:w-full">
                   <div class="bg-base-100 shadow rounded-md px-4 py-0">
                     <div class="overflow-x-auto">
                       <table class="table table-compact">
@@ -120,7 +120,7 @@ const VisiMisiContent = (props) => {
                       </table>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div innerHTML={data.content}></div>

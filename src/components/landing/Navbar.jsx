@@ -42,7 +42,7 @@ const Navbar = () => {
                   </li>
                   <li tabindex="0">
                     <details>
-                      <summary>PROGRAM JURUSAN</summary>
+                      <summary>TENTANG KAMI</summary>
                       <ul class="p-2">
                         <li>
                           <A href="/pages/profile">Profile Sekolah</A>
@@ -51,7 +51,7 @@ const Navbar = () => {
                           <A href="/pages/visimisi">Visi dan Misi</A>
                         </li>
                         <li>
-                          <A href="/pages/akreditasi">Akreditasi</A>
+                          <A href="/pages/akreditasi">Stakeholder</A>
                         </li>
                         <li>
                           <A href="/pages/hubunganindustri">
@@ -106,7 +106,7 @@ const Navbar = () => {
                         <A href="/pages/visimisi">Visi dan Misi</A>
                       </li> */}
                       <li>
-                        <A href="/pages/akreditasi">Akreditasi</A>
+                        <A href="/pages/akreditasi">Stakeholder</A>
                       </li>
                       <li>
                         <A href="/pages/hubunganindustri">Hubungan Industri </A>
