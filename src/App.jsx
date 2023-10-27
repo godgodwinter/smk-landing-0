@@ -31,7 +31,7 @@ const routes = [
         component: lazy(() => import("./pages/landing/tentang/visimisi.jsx")),
       },
       {
-        path: "/akreditasi",
+        path: "/stakeholder",
         component: lazy(() => import("./pages/landing/tentang/akreditasi.jsx")),
       },
       {
@@ -69,7 +69,7 @@ const routes = [
       // !jurusan-end
 
       {
-        path: "/contact",
+        path: "/madin",
         component: lazy(() => import("./pages/landing/LandingContact.jsx")),
       },
     ],

@@ -57,12 +57,12 @@ const Footer = () => {
                 >
                   VISI DAN MISI
                 </A> */}
-                {/* <A
-                  href={`/pages/akreditasi`}
+                <A
+                  href={`/pages/stakeholder`}
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  AKREDITASI
-                </A> */}
+                  STAKEHOLDER
+                </A>
                 <A
                   href={`/pages/hubunganindustri`}
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"

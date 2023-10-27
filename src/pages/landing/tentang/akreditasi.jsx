@@ -82,11 +82,11 @@ const VisiMisiContent = (props) => {
       <main class="pt-8 pb-16 lg:pt-0 lg:pb-24  antialiased ">
         <div class="flex justify-between px-4 mx-auto ">
           <article class="prose mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue ">
-            <header class="mb-4 lg:mb-6 not-format">
+            {/* <header class="mb-4 lg:mb-6 not-format">
               <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl ">
                 {data.title}
               </h1>
-            </header>
+            </header> */}
             <div innerHTML={data.content}></div>
           </article>
         </div>

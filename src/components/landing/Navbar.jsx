@@ -51,7 +51,7 @@ const Navbar = () => {
                           <A href="/pages/visimisi">Visi dan Misi</A>
                         </li>
                         <li>
-                          <A href="/pages/akreditasi">Stakeholder</A>
+                          <A href="/pages/stakeholder">Stakeholder</A>
                         </li>
                         <li>
                           <A href="/pages/hubunganindustri">
@@ -74,7 +74,7 @@ const Navbar = () => {
                     <A href="/pages/berita">BERITA</A>
                   </li> */}
                   <li>
-                    <A href="/pages/contact">MADIN</A>
+                    <A href="/pages/madin">MADIN</A>
                   </li>
                 </ul>
               </div>
@@ -106,7 +106,7 @@ const Navbar = () => {
                         <A href="/pages/visimisi">Visi dan Misi</A>
                       </li> */}
                       <li>
-                        <A href="/pages/akreditasi">Stakeholder</A>
+                        <A href="/pages/stakeholder">Stakeholder</A>
                       </li>
                       <li>
                         <A href="/pages/hubunganindustri">Hubungan Industri </A>
@@ -127,7 +127,7 @@ const Navbar = () => {
                   <A href="/pages/berita">BERITA</A>
                 </li> */}
                 <li>
-                  <A href="/pages/contact">MADIN</A>
+                  <A href="/pages/madin">MADIN</A>
                 </li>
               </ul>
             </div>
