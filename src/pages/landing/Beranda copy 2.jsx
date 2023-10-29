@@ -4,7 +4,7 @@ import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
 import img_random_illu from "@/assets/img/random/Illustration2.png";
-import img_hero_smkdip from "@/assets/img/smk/galeri/hero_smkdip_2.jpg";
+import img_hero_smkdip from "@/assets/img/smk/galeri/hero_smkdip.png";
 import img_smk_galeri_06 from "@/assets/img/smk/galeri/06.jpg";
 import img_smk_galeri_05 from "@/assets/img/smk/galeri/05.jpg";
 import img_smk_galeri_04 from "@/assets/img/smk/galeri/04.jpg";
@@ -25,12 +25,6 @@ import img_kerjasama_2 from "@/assets/img/smk/kerjasama/img_kerjasama_2.jpg";
 import img_kerjasama_3 from "@/assets/img/smk/kerjasama/img_kerjasama_3.jpg";
 
 import img_tumbnail_01 from "@/assets/img/tumbnail/03.jpg";
-import logo_tjkt_new from "@/assets/img/smk/logo_tjkt_new.png";
-import img_logo_teknik_otomotif from "@/assets/img/smk/logo_to.png";
-import img_logo_dkv from "@/assets/img/smk/logo_dkv.png";
-import img_logo_perhotelan from "@/assets/img/smk/logo_perhotelan.png";
-import img_logo_farmasi from "@/assets/img/smk/logo_farmasi.png";
-import img_logo_lk from "@/assets/img/smk/logo_lk.png";
 
 import "flowbite";
 import { A } from "@solidjs/router";
@@ -553,7 +547,7 @@ const MenuDua_component = (props) => {
                 <img
                   alt="..."
                   class="max-w-full rounded-lg shadow-lg"
-                  src={logo_tjkt_new}
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                 />
               </div>
               <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -574,28 +568,8 @@ const MenuDua_component = (props) => {
                       />
                     </svg>
                   </div>
-                  <h3 class="text-3xl font-semibold">
-                    {" "}
-                    Teknik Jaringan Komputer dan Telekomunikasi
-                  </h3>
-                  <div>
-                    {" "}
-                    <p>
-                      Teknologi mengalami perkembangan yang sangat pesat
-                      sekarang ini. Semua industri yang menggunakan basis
-                      teknologi banyak membutuhkan tenaga kerja yang terampil
-                      dan ahli dalam bidangnya. Dari hal tersebut di atas,
-                      Sekolah Menengah Kejuruan (SMK) menjadi sebuah pilihan
-                      utama untuk mencetak tenaga ahli yang terampil dan siap
-                      kerja dalam menghadapi perkembangan teknologi sesuai
-                      dengan kebutuhan dunia industri.
-                    </p>
-                    <A href="/pages/programkeahlian/1">
-                      <button className="btn btn-info">
-                        Lihat Selengkapnya{" "}
-                      </button>
-                    </A>
-                  </div>
+                  <h3 class="text-3xl font-semibold"> {data[0].title}</h3>
+                  <div innerHTML={fn_truncateText(data[0].content, 500)}></div>
                 </div>
               </div>
             </div>
@@ -628,7 +602,7 @@ const MenuDua_component = (props) => {
                 <img
                   alt="..."
                   class="max-w-full rounded-lg shadow-lg"
-                  src={img_logo_teknik_otomotif}
+                  src="https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                 />
               </div>
               <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -649,312 +623,8 @@ const MenuDua_component = (props) => {
                       />
                     </svg>
                   </div>
-                  <h3 class="text-3xl font-semibold"> Teknik Otomotif</h3>
-                  <div>
-                    <p>
-                      Teknik OTOMOTIF adalah ilmu yang mempelajari tentang
-                      alat-alat transportasi darat yang menggunakan mesin,
-                      terutama kendaraan roda 2 yang berkembang dengan pesat
-                      sebagai cabang ilmu seiring dengan diciptakannya motor
-                      elektric. Dalam perkembangannya, sepeda motor semakin
-                      menjadi alat transportasi yang kompleks yang terdiri dari
-                      ribuan komponen yang tergolong dalam puluhan system dan
-                      subsistem.
-                    </p>
-                    <A href="/pages/programkeahlian/2">
-                      <button className="btn btn-info">
-                        Lihat Selengkapnya{" "}
-                      </button>
-                    </A>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="relative py-20">
-          <div
-            class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-            style="height: 80px;"
-          >
-            <svg
-              class="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon
-                class="text-white fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
-          <div class="container mx-auto px-4">
-            <div class="items-center flex flex-wrap">
-              <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
-                  alt="..."
-                  class="max-w-full rounded-lg shadow-lg"
-                  src={img_logo_dkv}
-                />
-              </div>
-              <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-                <div class="md:pr-12">
-                  <div class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 class="text-3xl font-semibold">
-                    {" "}
-                    Desain Komunikasi Visual
-                  </h3>
-                  <div>
-                    {" "}
-                    <p>
-                      Jurusan DKV adalah jurusan Desain Komunikasi Visual yang
-                      diajarkan di Sekolah Menengah Kejuruan (SMK). Jurusan ini
-                      memberikan pendidikan dan pelatihan kepada siswa tentang
-                      konsep dan teknikdesain grafis, termasuk tipografi,
-                      ilustrasi, fotografi, animasi dan sebagainya.
-                    </p>
-                    <A href="/pages/programkeahlian/3">
-                      <button className="btn btn-info">
-                        Lihat Selengkapnya{" "}
-                      </button>
-                    </A>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="relative py-20">
-          <div
-            class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-            style="height: 80px;"
-          >
-            <svg
-              class="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon
-                class="text-white fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
-          <div class="container mx-auto px-4">
-            <div class="items-center flex flex-wrap flex-row-reverse">
-              <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
-                  alt="..."
-                  class="max-w-full rounded-lg shadow-lg"
-                  src={img_logo_perhotelan}
-                />
-              </div>
-              <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-                <div class="md:pr-12">
-                  <div class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 class="text-3xl font-semibold"> Perhotelan</h3>
-                  <div>
-                    <p>
-                      Program Keahlian Perhotelan merupakan suatu program yang
-                      menghasilkan tenaga ahli dalam bidang perhotelan yang
-                      terampil dan kompeten di bidang pelayanan dasar perhotelan
-                      khususnya pemenuhan kebutuhan dasar manusia. Dalam program
-                      keahlian ini meliputi konsentrasi keahlian perhotelan dan
-                      restoran.
-                    </p>
-                    <A href="/pages/programkeahlian/4">
-                      <button className="btn btn-info">
-                        Lihat Selengkapnya{" "}
-                      </button>
-                    </A>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="relative py-20">
-          <div
-            class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-            style="height: 80px;"
-          >
-            <svg
-              class="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon
-                class="text-white fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
-          <div class="container mx-auto px-4">
-            <div class="items-center flex flex-wrap">
-              <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
-                  alt="..."
-                  class="max-w-full rounded-lg shadow-lg"
-                  src={img_logo_farmasi}
-                />
-              </div>
-              <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-                <div class="md:pr-12">
-                  <div class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 class="text-3xl font-semibold"> Farmasi</h3>
-                  <div>
-                    {" "}
-                    <p>
-                      Jurusan Farmasi adalah jurusan yang mempelajari segala hal
-                      tentang obat. Mulai dari bahan kimia yang ada di dalamnya,
-                      proses pembuatan obat, proses pengemasan obat, fungsi dan
-                      kegunaan obat, sampai cara distribusi dan pengelolaan stok
-                      obat. Singkatnya, segala hal tentang obat akan dipelajari
-                      di sini. SMK DIPONEGORO Tumpang sekolah menengah kejuruan
-                      dengan kompetensi keahlian farmasi untuk menghasilkan
-                      calon asisten tenaga kesehatan khususnya dalam bidang
-                      kefarmasian. Program keahlian Farmasi SMK DIPONEGORO
-                      Tumpang terdiri dari kompetensi keahlian Farmasi Klinis
-                      dan Komunitas.
-                    </p>
-                    <A href="/pages/programkeahlian/5">
-                      <button className="btn btn-info">
-                        Lihat Selengkapnya{" "}
-                      </button>
-                    </A>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="relative py-20">
-          <div
-            class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-            style="height: 80px;"
-          >
-            <svg
-              class="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon
-                class="text-white fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
-          <div class="container mx-auto px-4">
-            <div class="items-center flex flex-wrap flex-row-reverse">
-              <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
-                  alt="..."
-                  class="max-w-full rounded-lg shadow-lg"
-                  src={img_logo_lk}
-                />
-              </div>
-              <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-                <div class="md:pr-12">
-                  <div class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 class="text-3xl font-semibold"> Layanan Kesehatan</h3>
-                  <div>
-                    <p>
-                      Layanan Kesehatan (Asisten keperawatan) adalah salah satu
-                      jurusan yang memiliki program untuk menghasilkan tenaga
-                      ahli dalam layanan kesehatan sebagai asisten perawat
-                      dengan tujuan untuk menghasilkan perawat yang terampil dan
-                      kompeten di bidang pelayanan kesehatan. Alasan kenapa
-                      harus memilih jurusan ini karena sekarang ini sudah
-                      semakin banyak rumah sakit baru yang tentunya banyak
-                      membutuhkan tenaga kesehatan tak terkecuali asisten bagi
-                      perawat.
-                    </p>
-                    <A href="/pages/programkeahlian/6">
-                      <button className="btn btn-info">
-                        Lihat Selengkapnya{" "}
-                      </button>
-                    </A>
-                  </div>
+                  <h3 class="text-3xl font-semibold"> {data[1].title}</h3>
+                  <div innerHTML={fn_truncateText(data[1].content, 500)}></div>
                 </div>
               </div>
             </div>
@@ -1455,7 +1125,7 @@ const MenuHero_Component = (props) => {
           >
             <span
               id="blackOverlay"
-              class="w-full h-full absolute opacity-5 bg-black"
+              class="w-full h-full absolute opacity-25 bg-black"
             ></span>
           </div>
           {/* <div class="container relative mx-auto">
