@@ -4,7 +4,7 @@ import logo_semkadip_2 from "@/assets/img/smk/logo_semkadip_2.png";
 import logo_ig from "@/assets/img/svg/instagram-icon.svg";
 import logo_fb from "@/assets/img/svg/facebook.svg";
 import img_random_illu from "@/assets/img/random/Illustration2.png";
-import img_hero_smkdip from "@/assets/img/smk/galeri/hero_smkdip_2.jpg";
+import img_hero_smkdip from "@/assets/img/smk/galeri/hero-2-min.jpg";
 import img_smk_galeri_06 from "@/assets/img/smk/galeri/06.jpg";
 import img_smk_galeri_05 from "@/assets/img/smk/galeri/05.jpg";
 import img_smk_galeri_04 from "@/assets/img/smk/galeri/04.jpg";
